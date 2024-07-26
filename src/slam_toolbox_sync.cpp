@@ -79,6 +79,7 @@ void SynchronousSlamToolbox::laserCallback(
   // no odom info
   Pose2 pose;
   if (!pose_helper_->getOdomPose(pose, scan->header.stamp)) {
+    // RCLCPP_WARN(get_logger(), "Failed to compute odom pose %s -> %s", pose_helper_->base_frame_.c_str(), pose_helper_->odom_frame_.c_str());
     RCLCPP_WARN(get_logger(), "Failed to compute odom pose");
     return;
   }
